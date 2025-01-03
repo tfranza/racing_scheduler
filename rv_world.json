@@ -1,0 +1,146 @@
+{ 
+	"tables": {
+		"Track": {
+			"columns": {
+				"track_id": {
+					"dtype": "serial",
+					"modifiers": [] 
+				},
+				"track_label": {
+					"dtype": "varchar(100)",
+					"modifiers": [] 
+				},
+				"laptime": {
+					"dtype": "time",
+					"modifiers": [] 
+				}
+			},
+			"pkeys": ["track_id"],
+			"fkeys": {}
+		},
+		"Player": {
+			"columns": {
+				"player_id": {
+					"dtype": "serial",
+					"modifiers": [] 
+				},
+				"player_label": {
+					"dtype": "varchar(100)",
+					"modifiers": [] 
+				}
+			},
+			"pkeys": ["player_id"],
+			"fkeys": {}
+		},
+		"Car": {
+			"columns": {
+				"car_id": {
+					"dtype": "serial",
+					"modifiers": [] 
+				},
+				"car_label": {
+					"dtype": "varchar(100)",
+					"modifiers": [] 
+				}
+			},
+			"pkeys": ["car_id"],
+			"fkeys": {}
+		},
+		"Championship": {
+			"columns": {
+				"championship_id": {
+					"dtype": "serial",
+					"modifiers": [] 
+				},
+				"championship_label": {
+					"dtype": "varchar(100)",
+					"modifiers": [] 
+				},
+				"startdate": {
+					"dtype": "date",
+					"modifiers": [] 
+				},
+				"enddate": {
+					"dtype": "date",
+					"modifiers": [] 
+				}
+			},
+			"pkeys": ["championship_id"],
+			"fkeys": {}
+		},
+		"Race": {
+			"columns": {
+				"race_id": {
+					"dtype": "serial",
+					"modifiers": [] 
+				},
+				"championship_id": {
+					"dtype": "serial",
+					"modifiers": [] 
+				},
+				"track_id": {
+					"dtype": "serial",
+					"modifiers": [] 
+				},
+				"track_idx": {
+					"dtype": "int",
+					"modifiers": [] 
+				},
+				"duration": {
+					"dtype": "time",
+					"modifiers": [] 
+				}
+			},
+			"pkeys": ["race_id"],
+			"fkeys": {
+				"championship_id": {
+					"tab": "Championship",
+					"col": "championship_id"
+				},
+				"track_id": {
+					"tab": "Track",
+					"col": "track_id"
+				}
+			}
+		},
+		"Racer": {
+			"columns": {
+				"racer_id": {
+					"dtype": "serial",
+					"modifiers": [] 
+				},
+				"player_id": {
+					"dtype": "serial",
+					"modifiers": [] 
+				},
+				"race_id": {
+					"dtype": "serial",
+					"modifiers": [] 
+				},
+				"car_id": {
+					"dtype": "serial",
+					"modifiers": [] 
+				},
+				"pos": {
+					"dtype": "int",
+					"modifiers": ["null"] 
+				}
+			},
+			"pkeys": ["racer_id"],
+			"fkeys": {
+				"player_id": {
+					"tab": "Player",
+					"col": "player_id"
+				},
+				"race_id": {
+					"tab": "Race",
+					"col": "race_id"
+				},
+				"car_id": {
+					"tab": "Car",
+					"col": "car_id"
+				}
+			}
+		}
+	}
+}
